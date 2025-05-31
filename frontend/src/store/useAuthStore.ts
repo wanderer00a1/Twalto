@@ -4,6 +4,12 @@ import { axiosInstance } from "../lib/axios";
 import toast from "react-hot-toast";
 import axios from "axios";
 
+type Data = {
+  username?: string;
+  email: string;
+  password: string;
+};
+
 type AuthStore = {
   authUser: any | null;
   isSigningUp: boolean;
@@ -13,11 +19,9 @@ type AuthStore = {
   isCheckingAuth: boolean;
   checkAuth: () => Promise<void>;
   signup: Function;
-};
-type Data = {
-  username: string;
-  email: string;
-  password: string;
+  login: Function;
+  updateProfile: Function;
+  logout: () => Promise<void>;
 };
 
 export const useAuthStore = create<AuthStore>((set) => ({
@@ -56,6 +60,61 @@ export const useAuthStore = create<AuthStore>((set) => ({
       }
     } finally {
       set({ isSigningUp: false });
+    }
+  },
+
+  login: async (data: Data) => {
+    set({ isLoggingIn: true });
+    try {
+      const res = await axiosInstance.post("/auth/login", data);
+      set({ authUser: res.data });
+      toast.success("Logged in successfully");
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        toast.error(error.response.data.message);
+      } else if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("Something went wrong");
+      }
+    } finally {
+      set({ isLoggingIn: false });
+    }
+  },
+
+  logout: async () => {
+    try {
+      await axiosInstance.post("/auth/logout");
+      set({ authUser: null });
+      toast.success("Logged out successfully");
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        toast.error(error.response.data.message || "An error occured");
+      } else if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("Something went wrong");
+      }
+    }
+  },
+
+  updateProfile: async (data: Data) => {
+    set({ isUpdatingProfile: true });
+    try {
+      const res = await axiosInstance.put("/auth/update-profile", data);
+      set({ authUser: res.data });
+      toast.success("Profile updated successfully");
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        console.log("Error in updating Profile");
+        toast.error(error.response.data.message);
+      } else if (error instanceof Error) {
+        console.log("error", error);
+      } else {
+        toast.error("Something went wrong");
+      }
+    } finally {
+      set({ isUpdatingProfile: false });
     }
   },
 }));

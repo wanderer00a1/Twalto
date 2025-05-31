@@ -153,7 +153,7 @@ function SignUpPage() {
           <div className="text-center">
             <p className="text-base-content/60">
               Already have an account?{" "}
-              <Link to="/login" className="link link-primary">
+              <Link to="/login" className="link link-primary no-underline">
                 Sign in
               </Link>
             </p>

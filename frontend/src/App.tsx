@@ -3,6 +3,7 @@ import { useAuthStore } from "./store/useAuthStore";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import { Loader } from "lucide-react";
+import { Toaster } from "react-hot-toast";
 
 import Navbar from "./components/Navbar";
 
@@ -33,14 +34,21 @@ function App() {
           path="/"
           element={authUser ? <HomePage /> : <Navigate to="/login" />}
         />
-        <Route path="/signup" element={!authUser ? <SignUpPage /> : <Navigate to="/"/> } />
-        <Route path="/login" element={!authUser ? <LoginPage />:<Navigate to="/"/>} />
+        <Route
+          path="/signup"
+          element={!authUser ? <SignUpPage /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/login"
+          element={!authUser ? <LoginPage /> : <Navigate to="/" />}
+        />
         <Route path="/settings" element={<SettingsPage />} />
         <Route
           path="/profile"
           element={authUser ? <ProfilePage /> : <Navigate to="/login" />}
         />
       </Routes>
+      <Toaster />
     </div>
   );
 }

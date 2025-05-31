@@ -1,5 +1,9 @@
+import { Link } from "react-router-dom";
 import { useState, type FormEvent } from "react";
+
 import { useAuthStore } from "../store/useAuthStore";
+import AuthImagePattern from "../components/AuthImagePattern";
+
 import {
   Eye,
   EyeOff,
@@ -9,20 +13,21 @@ import {
   MessageSquare,
   User,
 } from "lucide-react";
-import { Link } from "react-router-dom";
-import AuthImagePattern from "../components/AuthImagePattern";
+import toast from "react-hot-toast";
 
 function SignUpPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
-    fullName: "",
+    username: "",
     email: "",
     password: "",
   });
 
   const { signup, isSigningUp } = useAuthStore();
 
-  const validateForm = () => {};
+  const validateForm = () => {
+    if (!formData.username) return toast.error("Full name is required");
+  };
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
   };
@@ -46,7 +51,7 @@ function SignUpPage() {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/*FullName  */}
+            {/*username  */}
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-medium">Full Name</span>
@@ -60,9 +65,9 @@ function SignUpPage() {
                   type="text"
                   className="input input-bordered w-full pl-10"
                   placeholder="John Doe"
-                  value={formData.fullName}
+                  value={formData.username}
                   onChange={(e) =>
-                    setFormData({ ...formData, fullName: e.target.value })
+                    setFormData({ ...formData, username: e.target.value })
                   }
                 />
               </div>
@@ -138,13 +143,18 @@ function SignUpPage() {
           <div className="text-center">
             <p className="text-base-content/60">
               Already have an account?{" "}
-              <Link to="/login" className="link link-primary">Sign in</Link>
+              <Link to="/login" className="link link-primary">
+                Sign in
+              </Link>
             </p>
           </div>
         </div>
       </div>
       {/* right */}
-      <AuthImagePattern title="Join our community" subtitle="Connect with friends, share moments, and stay in touch with your loved ones"/>
+      <AuthImagePattern
+        title="Join our community"
+        subtitle="Connect with friends, share moments, and stay in touch with your loved ones"
+      />
     </div>
   );
 }

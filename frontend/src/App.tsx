@@ -1,6 +1,7 @@
 import { useEffect } from "react";
-import { useAuthStore } from "./store/useAuthStore";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { useAuthStore } from "./store/useAuthStore";
+import { useThemeStore } from "./store/useThemeStore";
 
 import { Loader } from "lucide-react";
 import { Toaster } from "react-hot-toast";
@@ -16,6 +17,8 @@ import ProfilePage from "./pages/ProfilePage";
 function App() {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
 
+  const { theme } = useThemeStore();
+
   useEffect(() => {
     checkAuth();
   }, [authUser]);
@@ -26,7 +29,7 @@ function App() {
       </div>
     );
   return (
-    <div>
+    <div data-theme="dark">
       <Navbar />
       <Routes>
         <Route

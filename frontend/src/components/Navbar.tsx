@@ -20,7 +20,7 @@ function Navbar() {
                   className="size-10 object-contain"
                 />
               </div>
-              <h1 className="text-lg font-bold">twalto</h1>
+              <h1 className="text-lg font-bold font-[cursive]">twalto</h1>
             </Link>
           </div>
 

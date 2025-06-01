@@ -29,7 +29,7 @@ function App() {
       </div>
     );
   return (
-    <div data-theme="dark">
+    <div data-theme={theme}>
       <Navbar />
       <Routes>
         <Route

@@ -3,15 +3,25 @@ import toast from "react-hot-toast";
 import { axiosInstance } from "../lib/axios";
 import { isAxiosError } from "axios";
 
+type User = {
+  _id: string;
+  email: string;
+  username: string;
+  password: string;
+  profilePic: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
 interface ChatStore {
   messages: Array<string>;
-  users: Array<string>;
-  selectedUser: any | null;
+  users: Array<User>;
+  selectedUser: any;
   isUsersLoading: boolean;
   isMessageLoading: boolean;
 
   getUsers: () => Promise<void>;
-  setSelectedUser:Function;
+  setSelectedUser: Function;
 }
 
 export const useChatStore = create<ChatStore>((set) => ({
@@ -28,6 +38,9 @@ export const useChatStore = create<ChatStore>((set) => ({
       set({ users: res.data });
     } catch (error) {
       if (isAxiosError(error) && error.response) {
+        console.log("Full error response:", error.response); // Add this
+        console.log("Status:", error.response.status); // Add this
+        console.log("Error message:", error.response.data.message);
         toast.error(error.response.data.message);
       } else if (error instanceof Error) {
         toast.error(error.message);
@@ -54,7 +67,7 @@ export const useChatStore = create<ChatStore>((set) => ({
     }
   },
 
-  //todo - 
+  //todo -
   setSelectedUser: (selectedUser: any | null) => {
     set({ selectedUser });
   },

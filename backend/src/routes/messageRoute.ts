@@ -8,8 +8,15 @@ import {
 
 const router = express.Router();
 
+// More specific routes first
 router.get("/users", protectRoute as any, getUsersForSidebar as any);
-router.get("/:id", protectRoute as any, getMessages as any);
-router.post("/send/:id", protectRoute as any, sendMessage as any);
+
+// Then parameterized routes
+router.get("/:id([0-9a-fA-F]{24})", protectRoute as any, getMessages as any); // MongoDB ObjectId pattern
+router.post(
+  "/send/:id([0-9a-fA-F]{24})",
+  protectRoute as any,
+  sendMessage as any
+);
 
 export default router;

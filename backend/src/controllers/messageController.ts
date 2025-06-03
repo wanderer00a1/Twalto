@@ -1,4 +1,4 @@
-import { Request, Response } from "express.js";
+import { Request, Response } from "express";
 import User from "../models/userModel.js";
 import Message from "../models/messageModel.js";
 import cloudinary from "../lib/cloudinary.js";

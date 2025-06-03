@@ -1,4 +1,5 @@
 import express from "express";
+import fs from "fs";
 import { Request, Response } from "express";
 import dotenv from "dotenv";
 import { connectDB } from "./lib/db.js";
@@ -28,11 +29,13 @@ app.use(
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-if (process.env.NODE_ENV === "production") {
+const indexHtmlPath = path.join(__dirname, "../frontend", "dist", "index.html");
+
+if (process.env.NODE_ENV === "production" && fs.existsSync(indexHtmlPath)) {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
   app.get("*", (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+    res.sendFile(indexHtmlPath);
   });
 }
 

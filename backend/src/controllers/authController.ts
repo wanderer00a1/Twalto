@@ -1,5 +1,5 @@
-import { Request, Response } from "express.js";
-import bcrypt from "bcryptjs.js";
+import { Request, Response } from "express";
+import bcrypt from "bcryptjs";
 
 import User from "../models/userModel.js";
 import { generateToken } from "../lib/utils.js";

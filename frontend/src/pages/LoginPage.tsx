@@ -1,6 +1,6 @@
-import { useState, type FormEvent } from "react.js";
+import { useState, type FormEvent } from "react";
 import { useAuthStore } from "../store/useAuthStore.js";
-import { Link } from "react-router-dom.js";
+import { Link } from "react-router-dom";
 import AuthImagePattern from "../components/AuthImagePattern.js";
 import {
   EyeOff,
@@ -9,7 +9,7 @@ import {
   Mail,
   MessageSquare,
   Lock,
-} from "lucide-react.js";
+} from "lucide-react";
 
 function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);

@@ -1,10 +1,10 @@
-import { useEffect } from "react.js";
-import { Routes, Route, Navigate } from "react-router-dom.js";
+import { useEffect } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuthStore } from "./store/useAuthStore.js";
 import { useThemeStore } from "./store/useThemeStore.js";
 
-import { Loader } from "lucide-react.js";
-import { Toaster } from "react-hot-toast.js";
+import { Loader } from "lucide-react";
+import { Toaster } from "react-hot-toast";
 
 import Navbar from "./components/Navbar.js";
 

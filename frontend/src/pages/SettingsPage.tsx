@@ -1,6 +1,6 @@
 import { useThemeStore } from "../store/useThemeStore.js";
-import { THEMES } from "../constants.js";
-import { Send } from "lucide-react.js";
+import { THEMES } from "../constants";
+import { Send } from "lucide-react";
 const PREVIEW_MESSAGES = [
   { id: 1, content: "Pizza or tacos?", isSent: false },
   { id: 2, content: "Why not both? 🌮🍕", isSent: true },

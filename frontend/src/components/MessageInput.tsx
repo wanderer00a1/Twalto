@@ -1,7 +1,7 @@
-import { useState, useRef, type ChangeEvent, type FormEvent } from "react.js";
+import { useState, useRef, type ChangeEvent, type FormEvent } from "react";
 import { useChatStore } from "../store/useChatStore.js";
-import { X, Image, Send } from "lucide-react.js";
-import toast from "react-hot-toast.js";
+import { X, Image, Send } from "lucide-react";
+import toast from "react-hot-toast";
 
 function MessageInput() {
   const [text, setText] = useState<string>("");

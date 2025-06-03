@@ -1,9 +1,9 @@
-import { create } from "zustand.js";
+import { create } from "zustand";
 import { axiosInstance } from "../lib/axios.js";
 
-import toast from "react-hot-toast.js";
-import axios from "axios.js";
-import { Socket, io } from "socket.io-client.js";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { Socket, io } from "socket.io-client";
 
 type Data = {
   username?: string;

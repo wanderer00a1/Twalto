@@ -7,8 +7,9 @@ import { Socket, io } from "socket.io-client";
 
 type Data = {
   username?: string;
-  email: string;
-  password: string;
+  email?: string;
+  password?: string;
+  profilePic?: string;
 };
 
 type AuthStore = {

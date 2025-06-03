@@ -36,7 +36,7 @@ interface ChatStore {
   sendMessage: Function;
 
   subscribeToMessages: () => void;
-  unsubscribeToMessages: () => void;
+  unsubscribeFromMessages: () => void;
 }
 
 export const useChatStore = create<ChatStore>((set, get) => ({
@@ -112,16 +112,16 @@ export const useChatStore = create<ChatStore>((set, get) => ({
     socket.off("newMessage");
 
     socket.on("newMessage", (newMessage) => {
-      set((state) => ({ messages: [...state.messages, newMessage] }));
+      if (newMessage.senderId !== selectedUser._id) return;
+      set({ messages: [...get().messages, newMessage] });
     });
   },
 
-  unsubscribeToMessages: () => {
-    const socket = useAuthStore.getState().socket;
-    socket?.off("newMessage");
+  unsubscribeFromMessages: () => {
+    const socket = useAuthStore.getState().socket!;
+    socket.off("newMessage");
   },
 
-  //todo -
   setSelectedUser: (selectedUser: any | null) => {
     set({ selectedUser });
   },

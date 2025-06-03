@@ -1,18 +1,25 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const dotenv_1 = __importDefault(require("dotenv"));
-const app = (0, express_1.default)();
-dotenv_1.default.config();
-const authRoute_1 = __importDefault(require("./routes/authRoute"));
+import express from "express";
+import dotenv from "dotenv";
+import { connectDB } from "./lib/db";
+import cookieParser from "cookie-parser";
+import cors from "cors";
+import authRoutes from "./routes/authRoute";
+import messageRoutes from "./routes/messageRoute";
+import { app, server } from "./lib/socket";
+dotenv.config();
 const PORT = process.env.PORT || 3000;
+app.use(express.json());
+app.use(cookieParser());
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+}));
 app.get("/", (req, res) => {
     res.send("Working.....");
 });
-app.use("/api/auth", authRoute_1.default);
-app.listen(PORT, () => {
+app.use("/api/auth", authRoutes);
+app.use("/api/messages", messageRoutes);
+server.listen(PORT, () => {
     console.log("Server is Running on port " + PORT);
+    connectDB();
 });

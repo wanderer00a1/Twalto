@@ -4,6 +4,7 @@ import Message from "../models/messageModel";
 import cloudinary from "../lib/cloudinary";
 import { getReceiverSocketId, io } from "../lib/socket";
 
+
 export const getUsersForSidebar = async (req: Request, res: Response) => {
   try {
     const loggedInUserId = req.user._id;
@@ -63,7 +64,7 @@ export const sendMessage = async (req: Request, res: Response) => {
     });
     await newMessage.save();
 
-    //realtime Chat to specific user
+    //realtime Chat to user
     const receiverSocketId = getReceiverSocketId(receiverId);
     if (receiverSocketId) {
       io.to(receiverSocketId).emit("newMessage", newMessage);

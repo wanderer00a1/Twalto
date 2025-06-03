@@ -1,12 +1,10 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const authController_1 = require("../controllers/authController");
-const router = express_1.default.Router();
-router.post("/signup", authController_1.signup);
-router.post("/login", authController_1.login);
-router.post("/logout", authController_1.logout);
-exports.default = router;
+import express from "express";
+import { signup, login, logout, updateProfile, checkAuth, } from "../controllers/authController";
+import { protectRoute } from "../middleware/authMiddleware";
+const router = express.Router();
+router.post("/signup", signup);
+router.post("/login", login);
+router.post("/logout", logout);
+router.put("/update-profile", protectRoute, updateProfile);
+router.get("/check", protectRoute, checkAuth);
+export default router;

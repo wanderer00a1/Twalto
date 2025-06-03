@@ -1,11 +1,11 @@
-import express from "express.js";
+import express from "express";
 
-import dotenv from "dotenv.js";
+import dotenv from "dotenv";
 import { connectDB } from "./lib/db.js";
-import cookieParser from "cookie-parser.js";
-import cors from "cors.js";
+import cookieParser from "cookie-parser";
+import cors from "cors";
 
-import path from "path.js";
+import path from "path";
 
 import authRoutes from "./routes/authRoute.js";
 import messageRoutes from "./routes/messageRoute.js";

@@ -1,8 +1,8 @@
-import { create } from "zustand";
-import toast from "react-hot-toast";
-import { axiosInstance } from "../lib/axios";
-import { isAxiosError } from "axios";
-import { useAuthStore } from "./useAuthStore";
+import { create } from "zustand.js";
+import toast from "react-hot-toast.js";
+import { axiosInstance } from "../lib/axios.js";
+import { isAxiosError } from "axios.js";
+import { useAuthStore } from "./useAuthStore.js";
 
 type User = {
   _id: string;

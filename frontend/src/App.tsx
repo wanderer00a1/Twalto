@@ -1,18 +1,18 @@
-import { useEffect } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import { useAuthStore } from "./store/useAuthStore";
-import { useThemeStore } from "./store/useThemeStore";
+import { useEffect } from "react.js";
+import { Routes, Route, Navigate } from "react-router-dom.js";
+import { useAuthStore } from "./store/useAuthStore.js";
+import { useThemeStore } from "./store/useThemeStore.js";
 
-import { Loader } from "lucide-react";
-import { Toaster } from "react-hot-toast";
+import { Loader } from "lucide-react.js";
+import { Toaster } from "react-hot-toast.js";
 
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar.js";
 
-import HomePage from "./pages/HomePage";
-import SignUpPage from "./pages/SignUpPage";
-import LoginPage from "./pages/LoginPage";
-import SettingsPage from "./pages/SettingsPage";
-import ProfilePage from "./pages/ProfilePage";
+import HomePage from "./pages/HomePage.js";
+import SignUpPage from "./pages/SignUpPage.js";
+import LoginPage from "./pages/LoginPage.js";
+import SettingsPage from "./pages/SettingsPage.js";
+import ProfilePage from "./pages/ProfilePage.js";
 
 function App() {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();

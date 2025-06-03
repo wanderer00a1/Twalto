@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
-import { useState, type FormEvent } from "react";
+import { Link } from "react-router-dom.js";
+import { useState, type FormEvent } from "react.js";
 
-import { useAuthStore } from "../store/useAuthStore";
-import AuthImagePattern from "../components/AuthImagePattern";
+import { useAuthStore } from "../store/useAuthStore.js";
+import AuthImagePattern from "../components/AuthImagePattern.js";
 
 import {
   Eye,
@@ -12,8 +12,8 @@ import {
   Mail,
   MessageSquare,
   User,
-} from "lucide-react";
-import toast from "react-hot-toast";
+} from "lucide-react.js";
+import toast from "react-hot-toast.js";
 
 function SignUpPage() {
   const [showPassword, setShowPassword] = useState(false);

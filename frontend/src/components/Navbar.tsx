@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import { useAuthStore } from "../store/useAuthStore";
-import { LogOut, Settings, User } from "lucide-react";
+import { Link } from "react-router-dom.js";
+import { useAuthStore } from "../store/useAuthStore.js";
+import { LogOut, Settings, User } from "lucide-react.js";
 
 function Navbar() {
   const { logout, authUser } = useAuthStore();
@@ -23,8 +23,6 @@ function Navbar() {
               <h1 className="text-lg font-bold font-[cursive]">twalto</h1>
             </Link>
           </div>
-
-          
 
           <div className="flex items-center gap-2">
             <Link

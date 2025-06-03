@@ -1,11 +1,11 @@
-import { useEffect, useRef } from "react";
-import { useChatStore } from "../store/useChatStore";
+import { useEffect, useRef } from "react.js";
+import { useChatStore } from "../store/useChatStore.js";
 
-import ChatHeader from "./ChatHeader";
-import MessageSkeleton from "./skeletons/MessageSkeleton";
-import MessageInput from "./MessageInput";
-import { useAuthStore } from "../store/useAuthStore";
-import { formatMessageTime } from "../lib/utils";
+import ChatHeader from "./ChatHeader.js";
+import MessageSkeleton from "./skeletons/MessageSkeleton.js";
+import MessageInput from "./MessageInput.js";
+import { useAuthStore } from "../store/useAuthStore.js";
+import { formatMessageTime } from "../lib/utils.js";
 
 function ChatContainer() {
   const {

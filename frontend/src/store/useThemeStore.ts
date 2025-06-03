@@ -1,4 +1,4 @@
-import { create } from "zustand";
+import { create } from "zustand.js";
 type Theme = string;
 
 interface ThemeStore {

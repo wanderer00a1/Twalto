@@ -1,6 +1,6 @@
-import { useThemeStore } from "../store/useThemeStore";
-import { THEMES } from "../constants";
-import { Send } from "lucide-react";
+import { useThemeStore } from "../store/useThemeStore.js";
+import { THEMES } from "../constants.js";
+import { Send } from "lucide-react.js";
 const PREVIEW_MESSAGES = [
   { id: 1, content: "Pizza or tacos?", isSent: false },
   { id: 2, content: "Why not both? 🌮🍕", isSent: true },
@@ -101,7 +101,6 @@ function SettingsPage() {
                     <input
                       type="text"
                       className="input input-bordered flex-1 text-sm h-10"
-                      
                     />
                     <button className="btn btn-primary h-10 min-h-0">
                       <Send size={18} />

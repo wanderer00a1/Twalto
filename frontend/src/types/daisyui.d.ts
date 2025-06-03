@@ -1,5 +1,5 @@
 declare module "daisyui" {
-  import { PluginCreator } from "tailwindcss/types/config";
+  import { PluginCreator } from "tailwindcss/types/config.js";
 
   interface DaisyUIConfig {
     themes?: string[] | Array<string | Record<string, any>> | boolean;

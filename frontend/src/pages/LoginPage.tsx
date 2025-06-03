@@ -1,8 +1,15 @@
-import { useState, type FormEvent } from "react";
-import { useAuthStore } from "../store/useAuthStore";
-import { Link } from "react-router-dom";
-import AuthImagePattern from "../components/AuthImagePattern";
-import { EyeOff,Eye, Loader2, Mail, MessageSquare,Lock } from "lucide-react";
+import { useState, type FormEvent } from "react.js";
+import { useAuthStore } from "../store/useAuthStore.js";
+import { Link } from "react-router-dom.js";
+import AuthImagePattern from "../components/AuthImagePattern.js";
+import {
+  EyeOff,
+  Eye,
+  Loader2,
+  Mail,
+  MessageSquare,
+  Lock,
+} from "lucide-react.js";
 
 function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -25,14 +32,11 @@ function LoginPage() {
                 <MessageSquare className="size-6 text-primary" />
               </div>
               <h1 className="text-2xl font-bold mt-2">Welcome Back</h1>
-              <p className="text-base-content/60">
-                Sign in to your account 
-              </p>
+              <p className="text-base-content/60">Sign in to your account</p>
             </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            
             {/* Email */}
             <div className="form-control">
               <label className="label">

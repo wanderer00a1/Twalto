@@ -19,11 +19,16 @@ function ChatContainer() {
   const { authUser } = useAuthStore();
 
   useEffect(() => {
+    if (!selectedUser) return;
+
     getMessages(selectedUser._id);
     subscribeToMessages();
 
     return () => unsubscribeToMessages();
-  }, [selectedUser._id, getMessages]);
+  }, [
+    selectedUser._id,
+    getMessages
+  ]);
 
   if (isMessageLoading)
     return (

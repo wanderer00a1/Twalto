@@ -1,4 +1,4 @@
-import express from "express.js";
+import express from "express";
 import { protectRoute } from "../middleware/authMiddleware.js";
 import {
   getUsersForSidebar,

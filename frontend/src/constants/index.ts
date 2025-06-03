@@ -2,7 +2,6 @@ export const THEMES = [
   "dark",
   "light",
   "cupcake",
-  "cupcake",
   "bumblebee",
   "emerald",
   "corporate",
@@ -32,5 +31,4 @@ export const THEMES = [
   "dim",
   "nord",
   "sunset",
-  "retro",
 ];

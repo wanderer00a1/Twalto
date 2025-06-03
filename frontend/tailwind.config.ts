@@ -1,7 +1,7 @@
 // tailwind.config.ts
-import type { Config } from "tailwindcss.js";
+import type { Config } from "tailwindcss";
 
-import daisyui from "daisyui.js";
+import daisyui from "daisyui";
 
 const config: Config = {
   content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],

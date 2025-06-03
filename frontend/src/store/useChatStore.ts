@@ -13,8 +13,17 @@ type User = {
   updatedAt: Date;
 };
 
+type Message = {
+  _id: string;
+  text: string;
+  senderId: string;
+  receiverId: string;
+  image: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
 interface ChatStore {
-  messages: Array<string>;
+  messages: Array<Message>;
   users: Array<User>;
   selectedUser: any;
   isUsersLoading: boolean;
@@ -22,9 +31,11 @@ interface ChatStore {
 
   getUsers: () => Promise<void>;
   setSelectedUser: Function;
+  getMessages: Function;
+  sendMessage: Function;
 }
 
-export const useChatStore = create<ChatStore>((set) => ({
+export const useChatStore = create<ChatStore>((set, get) => ({
   messages: [],
   users: [],
   selectedUser: null,
@@ -51,6 +62,7 @@ export const useChatStore = create<ChatStore>((set) => ({
       set({ isUsersLoading: false });
     }
   },
+
   getMessages: async (userId: string) => {
     set({ isMessageLoading: true });
     try {
@@ -64,6 +76,25 @@ export const useChatStore = create<ChatStore>((set) => ({
       }
     } finally {
       set({ isMessageLoading: false });
+    }
+  },
+
+  sendMessage: async (messageData: any) => {
+    const { selectedUser, messages } = get();
+    try {
+      const res = await axiosInstance.post(
+        `/messages/send/${selectedUser._id}`,
+        messageData
+      );
+      set({ messages: [...messages, res.data] });
+    } catch (error) {
+      if (isAxiosError(error) && error.response) {
+        toast.error(error.response.data.message);
+      } else if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("Something went wrong");
+      }
     }
   },
 

@@ -8,13 +8,25 @@ import {
 
 const router = express.Router();
 
-// More specific routes first
 router.get("/users", protectRoute as any, getUsersForSidebar as any);
 
-// Then parameterized routes
-router.get("/:id([0-9a-fA-F]{24})", protectRoute as any, getMessages as any); // MongoDB ObjectId pattern
+// Add parameter validation middleware
+const validateId = (
+  req: express.Request,
+  res: express.Response,
+  next: express.NextFunction
+) => {
+  const { id } = req.params;
+  if (!id || id.trim() === "") {
+    return res.status(400).json({ error: "Invalid ID parameter" });
+  }
+  next();
+};
+
+router.get("/:id", validateId as any, protectRoute as any, getMessages as any);
 router.post(
-  "/send/:id([0-9a-fA-F]{24})",
+  "/send/:id",
+  validateId as any,
   protectRoute as any,
   sendMessage as any
 );

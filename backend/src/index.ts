@@ -1,5 +1,5 @@
 import express from "express";
-
+import { Request, Response } from "express";
 import dotenv from "dotenv";
 import { connectDB } from "./lib/db.js";
 import cookieParser from "cookie-parser";
@@ -31,7 +31,7 @@ app.use("/api/messages", messageRoutes);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-  app.get("*", (req: Request, res: any) => {
+  app.get("*", (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
   });
 }

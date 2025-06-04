@@ -1,7 +1,7 @@
-import { Document } from "mongoose";
+import { Document, Types } from "mongoose";
 
 interface IUser extends Document {
-  _id: string;
+  _id: Types.ObjectId;
   username: string;
   email: string;
   password: string;

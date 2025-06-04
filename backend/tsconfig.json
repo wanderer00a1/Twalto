@@ -2,25 +2,28 @@
   "compilerOptions": {
     /* Language and Environment */
     "target": "ES2022",
-    
+
     /* Modules */
     "module": "ESNext",
     "rootDir": "./src",
     "moduleResolution": "bundler", // Changed from "node"
     "allowSyntheticDefaultImports": true, // Enabled
     "resolveJsonModule": true, // Enabled
-    
+
     /* Emit */
     "outDir": "./dist",
-    
+
     /* Interop Constraints */
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    
+
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+    "types": ["node", "express"],
+
     /* Type Checking */
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "src/types/**/*"],
   "exclude": ["node_modules", "dist"]
 }
